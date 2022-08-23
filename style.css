@@ -1,0 +1,43 @@
+body {
+  font-family: "SF Pro SC","HanHei SC","SF Pro Text","Myriad Set Pro","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+  background: rgba(0, 0, 0, 0.8);
+  color: #f5f5f7;
+}
+
+input {
+  width: 80px;
+}
+
+button {
+  cursor: pointer;
+  color: #f5f5f7;
+}
+
+table {
+  border: 1px solid #f5f5f7;
+  margin-top: 12px;
+}
+
+.areaDisplay {
+  display: block;
+}
+
+.areaHide {
+  display: none;
+}
+
+.button-area {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: left;
+}
+
+.concrete-button {
+  margin: 2px;
+  height: 18px;
+  background: #0077ed;
+  color: #f5f5f7;
+  border: 0;
+  border-radius: 6px;
+}

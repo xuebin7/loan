@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>贷款计算器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <input type="number" id="P" placeholder="本金(万元)" min="1" max="999" value="60" />
+  <input type="number" id="years" placeholder="期数(年)" min="1" max="30" value="30" />
+  <input type="number" id="rateOfInterest" placeholder="年利率(%)" min="2.75" max="6.8" step="0.1" value="3.25" />
+  <button id="calculate" class="concrete-button">计算</button>
+
+  <p>
+    总利息：
+  <div id="totalInterest"></div>
+  </p>
+
+  <div class="button-area">
+    <button id="debxLabel" class="concrete-button">等额本息</button>
+    <button id="debjLabel" class="concrete-button">等额本金</button>
+  </div>
+
+  <div id="debxBlock" class="areaDisplay">
+    <table id="debxTable">
+      <th>期数</th>
+      <th>月还款额</th>
+      <th>每月本金</th>
+      <th>每月利息</th>
+      <th>剩余本金</th>
+    </table>
+  </div>
+
+  <div id="debjBlock" class="areaDisplay">
+    <table id="debjTable">
+      <th>期数</th>
+      <th>月还款额</th>
+      <th>每月本金</th>
+      <th>每月利息</th>
+      <th>剩余本金</th>
+    </table>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
