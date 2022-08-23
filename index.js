@@ -19,7 +19,7 @@ const debjTable = document.getElementById("debjTable")
 // 默认显示等额本息
 debxBlock.className = 'areaDisplay'
 debjBlock.className = 'areaHide'
-totalInterest.innerText = 0.00
+totalInterest.innerText = '0.00'
 
 calculate.addEventListener('click', getLoanResult)
 
