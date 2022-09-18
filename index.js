@@ -1,5 +1,6 @@
 const P = document.getElementById('P')
-const years = document.getElementById('years')
+const yearsSelect = document.getElementById('years-select')
+const months = document.getElementById('months')
 const rateOfInterest = document.getElementById('rateOfInterest')
 const calculate = document.getElementById('calculate')
 const totalInterest = document.getElementById('totalInterest')
@@ -14,9 +15,12 @@ const debjLabel = document.getElementById('debjLabel')
 const debjBlock = document.getElementById('debjBlock')
 const debjTable = document.getElementById('debjTable')
 
+initYearSelect()
+
 // 默认显示等额本息
 debxLabelClick()
 
+yearsSelect.addEventListener('change', yearsSelectChange)
 debxLabel.addEventListener('click', debxLabelClick)
 debjLabel.addEventListener('click', debjLabelClick)
 calculate.addEventListener('click', calculateLoanResult)
@@ -34,13 +38,25 @@ function calculateLoanResult() {
   debxTable.innerHTML = headerHtml
   debjTable.innerHTML = headerHtml
 
-  // P 本金(万元), years 还款年限, rateOfInterest 年利率(%)
-  const PValue = P.value * 10000, monthsValue = years.value * 12, rateOfInterestValue = rateOfInterest.value * 0.01
+  // P 本金(万元), months 还款期数, rateOfInterest 年利率(%)
+  const PValue = P.value * 10000, monthsValue = months.value, rateOfInterestValue = rateOfInterest.value * 0.01
   let loanResult = loanCalculate(PValue, monthsValue, rateOfInterestValue)
   setTableValue({ debj: loanResult['debjResult'], debx: loanResult['debxResult'] })
 
   // 点击计算按钮时，默认显示等额本息内容
   debxLabelClick()
+}
+
+/**
+ * 初始化年限下拉框
+ */
+function initYearSelect() {
+  const totalYears = 30
+  let optoinHtml = `<option value=0>自定义</option>`
+  for (let index = 1; index <= totalYears; index++) {
+    optoinHtml += `<option value=${index}>${index}</option>`
+  }
+  yearsSelect.innerHTML = optoinHtml
 }
 
 /**
@@ -74,6 +90,21 @@ function getTrHtml(details) {
       <td>${item.restMoney}</td>
     </tr>`
   ).join('')
+}
+
+/**
+ * 年限下拉框更改事件
+ */
+function yearsSelectChange(event) {
+  const selectedYear = event.target.value
+  const selectedIntYear = Number.parseInt(selectedYear)
+  if (selectedIntYear === 0) {
+    months.disabled = false
+    months.value = ''
+  } else {
+    months.disabled = true
+    months.value = selectedIntYear * 12
+  }
 }
 
 /**
