@@ -39,6 +39,18 @@ function calculateLoanResult() {
   debjTable.innerHTML = headerHtml
 
   // P 本金(万元), months 还款期数, rateOfInterest 年利率(%)
+  if (!P.value) {
+    alert('请填写本金')
+    return
+  }
+  if (!months.value) {
+    alert('请填写期数')
+    return
+  }
+  if (!rateOfInterest.value) {
+    alert('请填写年利率')
+    return
+  }
   const PValue = P.value * 10000, monthsValue = months.value, rateOfInterestValue = rateOfInterest.value * 0.01
   let loanResult = loanCalculate(PValue, monthsValue, rateOfInterestValue)
   setTableValue({ debj: loanResult['debjResult'], debx: loanResult['debxResult'] })
